@@ -3,12 +3,11 @@ import Header from "./_components/header"
 import { Button } from "./_components/ui/button"
 import { Input } from "./_components/ui/input"
 import Image from "next/image"
-import { Card, CardContent } from "./_components/ui/card"
-import { Badge } from "./_components/ui/badge"
-import { Avatar, AvatarImage } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
 import Footer from "./_components/footer"
+import { quickSearchOptions } from "./_constants/search"
+import BookingItem from "./_components/booking-item"
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany()
@@ -35,60 +34,18 @@ export default async function Home() {
         {/* BUSCA RAPIDA  */}
 
         <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
-          <Button className="gap-2" variant="secondary">
-            <Image
-              src="/cabelo.svg"
-              width={16}
-              height={16}
-              alt="Cabelo"
-              className=""
-            />
-            Cabelo
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image
-              src="/barba.svg"
-              width={16}
-              height={16}
-              alt="Barba"
-              className=""
-            />
-            Barba
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image
-              src="/acabamento.svg"
-              width={16}
-              height={16}
-              alt="Acabamento"
-              className=""
-            />
-            Acabamento
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image
-              src="/acabamento.svg"
-              width={16}
-              height={16}
-              alt="Acabamento"
-              className=""
-            />
-            Disfarce
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image
-              src="/acabamento.svg"
-              width={16}
-              height={16}
-              alt="Acabamento"
-              className=""
-            />
-            Sobrancelha
-          </Button>
+          {quickSearchOptions.map((option) => (
+            <Button className="gap-2" variant="secondary" key={option.title}>
+              <Image
+                src={option.imageUrl}
+                width={16}
+                height={16}
+                alt={option.title}
+                className=""
+              />
+              {option.title}
+            </Button>
+          ))}
         </div>
 
         {/* IMAGEM /> */}
@@ -102,33 +59,9 @@ export default async function Home() {
           />
         </div>
         {/* AGENDAMENTO /> */}
-        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
-          Agendamentos
-        </h2>
-        <Card>
-          <CardContent className="flex justify-between p-0">
-            {/* DIV DA ESQUERDA /> */}
-            <div className="flex flex-col gap-2 py-5 pl-5">
-              <Badge className="w-fit">Confirmado</Badge>
-              <h3 className="font-semibold">Corte de cabelo</h3>
+        <BookingItem />
 
-              <div className="flex items-center gap-2">
-                <Avatar className="h-6 w-6">
-                  <AvatarImage src="https://utfs.io/f/45331760-899c-4b4b-910e-e00babb6ed81-16q.png" />
-                </Avatar>
-                <p className="text-sm">Barbearia FSW</p>
-              </div>
-            </div>
-
-            {/* DIV DA DIREITA /> */}
-
-            <div className="flex flex-col items-center justify-center border-l-2 border-solid px-5">
-              <p className="text-sm">Agosto</p>
-              <p className="text-2xl">05</p>
-              <p className="text-sm">20:00</p>
-            </div>
-          </CardContent>
-        </Card>
+        {/* RECOMENDADOS /> */}
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
           Recomendados
         </h2>
