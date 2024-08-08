@@ -7,11 +7,16 @@ import { Card, CardContent } from "./_components/ui/card"
 import { Badge } from "./_components/ui/badge"
 import { Avatar, AvatarImage } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma"
-import { log } from "console"
 import BarbershopItem from "./_components/barbershop-item"
+import Footer from "./_components/footer"
+
 export default async function Home() {
   const barbershops = await db.barbershop.findMany()
-  log(barbershops)
+  const popularBarbershops = await db.barbershop.findMany({
+    orderBy: {
+      name: "desc",
+    },
+  })
   return (
     <div className="">
       <Header />
@@ -26,6 +31,66 @@ export default async function Home() {
             <SearchIcon />
           </Button>
         </div>
+
+        {/* BUSCA RAPIDA  */}
+
+        <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/cabelo.svg"
+              width={16}
+              height={16}
+              alt="Cabelo"
+              className=""
+            />
+            Cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/barba.svg"
+              width={16}
+              height={16}
+              alt="Barba"
+              className=""
+            />
+            Barba
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/acabamento.svg"
+              width={16}
+              height={16}
+              alt="Acabamento"
+              className=""
+            />
+            Acabamento
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/acabamento.svg"
+              width={16}
+              height={16}
+              alt="Acabamento"
+              className=""
+            />
+            Disfarce
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/acabamento.svg"
+              width={16}
+              height={16}
+              alt="Acabamento"
+              className=""
+            />
+            Sobrancelha
+          </Button>
+        </div>
+
         {/* IMAGEM /> */}
 
         <div className="relative mt-6 h-[150px] w-full">
@@ -72,7 +137,17 @@ export default async function Home() {
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
+
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+          Populares
+        </h2>
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+          {popularBarbershops.map((barbershop) => (
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+          ))}
+        </div>
       </div>
+      <Footer />
     </div>
   )
 }
