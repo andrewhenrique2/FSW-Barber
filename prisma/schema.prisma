@@ -33,7 +33,7 @@ model BarbershopService {
   name         String
   description  String
   imageUrl     String
-  price        Decimal    @db.Decimal(10, 2) // Corrigido de Deciumal para Decimal
+  price        Decimal    @db.Decimal(10, 2) 
   barbershopId String
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
   bookings     Booking[]
