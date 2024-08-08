@@ -18,15 +18,17 @@ model User {
 
 model Barbershop {
   id          String              @id @default(uuid())
-  email       String
+  email       String              @unique
   name        String
+  address     String
   phones      String[]
   description String
   imageUrl    String
-  createAt    DateTime            @default(now())
+  createdAt   DateTime            @default(now())
   updatedAt   DateTime            @updatedAt
   services    BarbershopService[]
 }
+
 
 model BarbershopService {
   id           String     @id @default(uuid())
