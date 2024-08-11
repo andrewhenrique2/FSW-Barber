@@ -4,8 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
 import { quickSearchOptions } from "../_constants/search"
-import { Avatar } from "./ui/avatar"
-import { AvatarImage } from "@radix-ui/react-avatar"
+import { Avatar, AvatarImage } from "./ui/avatar"
+
 const SidebarButton = () => {
   return (
     <SheetContent className="overflow-y-auto">
