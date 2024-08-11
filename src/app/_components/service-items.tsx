@@ -16,6 +16,7 @@ const ServiceItem = ({ service }: ServiceItemProps) => {
           <Image
             src={service.imageUrl}
             fill
+            sizes="(100vw - 2rem) 100px"
             className="rounded-lg object-cover"
             alt={service.name}
           />

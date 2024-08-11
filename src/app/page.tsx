@@ -5,7 +5,6 @@ import { Input } from "./_components/ui/input"
 import Image from "next/image"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
-import Footer from "./_components/footer"
 import { quickSearchOptions } from "./_constants/search"
 import BookingItem from "./_components/booking-item"
 
@@ -55,6 +54,8 @@ export default async function Home() {
             src="/banner-01.png"
             alt="Agende nos melhores com FSW Barber"
             fill
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="rounded-xl object-cover"
           />
         </div>
@@ -80,7 +81,6 @@ export default async function Home() {
           ))}
         </div>
       </div>
-      <Footer />
     </div>
   )
 }
