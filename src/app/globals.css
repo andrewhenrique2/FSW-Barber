@@ -47,3 +47,28 @@
     @apply h-full bg-background text-foreground;
   }
 }
+
+/* Classe para estilizar a scrollbar */
+.scrollbar-thin {
+  scrollbar-width: thin; /* Para Firefox */
+  scrollbar-color: #888 #151619; /* Cor da scrollbar no Firefox */
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 30%; /* Largura da scrollbar */
+  height: 1px; /* Altura da scrollbar (para rolagem horizontal) */
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #888; /* Cor da parte que você segura para rolar */
+  border-radius: 10px; /* Arredondamento */
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor do trilho */
+}
+
+/* Efeito ao passar o mouse */
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Cor ao passar o mouse */
+}
