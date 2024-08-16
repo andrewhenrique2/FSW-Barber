@@ -4,7 +4,7 @@ import { Card, CardContent } from "./ui/card"
 import Image from "next/image"
 import Link from "next/link"
 import { Sheet, SheetTrigger } from "./ui/sheet"
-import SidebarButton from "./sidebar"
+import SidebarButton from "./sidebar-sheet"
 
 const Header = () => {
   return (
