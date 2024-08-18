@@ -16,6 +16,7 @@ async function seedDatabase() {
       "https://utfs.io/f/f64f1bd4-59ce-4ee3-972d-2399937eeafc-16x.png",
       "https://utfs.io/f/e995db6d-df96-4658-99f5-11132fd931e1-17j.png",
     ]
+
     const creativeNames = [
       "Barbearia Vintage",
       "Corte & Estilo",
@@ -87,46 +88,70 @@ async function seedDatabase() {
       },
     ]
 
-    const barbershops = []
     for (let i = 0; i < 10; i++) {
       const name = creativeNames[i]
       const address = addresses[i]
       const imageUrl = images[i]
+      const email = `contacto@${name.replace(/\s+/g, "").toLowerCase()}.com`
 
-      const barbershop = await prisma.barbershop.create({
-        data: {
-          name,
-          email: `contacto@${name.replace(/\s+/g, "").toLowerCase()}.com`, // Email único para cada barbearia
-          address, // Certifique-se de que este campo esteja no modelo e no código de seeding
-          imageUrl: imageUrl,
-          phones: ["(11) 99999-9999", "(11) 99999-9999"],
-          description:
-            "Bem-vindo à [Nome da Barbearia], onde tradição e modernidade se encontram para proporcionar a você uma experiência de cuidado pessoal incomparável. Desde [ano de fundação], temos nos dedicado a oferecer serviços de barbearia de alta qualidade, com um toque de autenticidade e estilo.",
-        },
+      // Verifica se a barbearia já existe
+      const existingBarbershop = await prisma.barbershop.findUnique({
+        where: { email },
       })
 
-      for (const service of services) {
-        await prisma.barbershopService.create({
+      if (existingBarbershop) {
+        // Atualiza a barbearia existente
+        await prisma.barbershop.update({
+          where: { email },
           data: {
-            name: service.name,
-            description: service.description,
-            price: service.price,
-            barbershop: {
-              connect: {
-                id: barbershop.id,
-              },
-            },
-            imageUrl: service.imageUrl,
+            name,
+            address,
+            imageUrl,
+            phones: ["(11) 99999-9999", "(11) 99999-9999"],
+            description:
+              "Bem-vindo à [Nome da Barbearia], onde tradição e modernidade se encontram para proporcionar a você uma experiência de cuidado pessoal incomparável. Desde [ano de fundação], temos nos dedicado a oferecer serviços de barbearia de alta qualidade, com um toque de autenticidade e estilo.",
           },
         })
-      }
+        console.log(`Barbershop with email ${email} updated.`)
+      } else {
+        // Cria uma nova barbearia se não existir
+        const barbershop = await prisma.barbershop.create({
+          data: {
+            name,
+            email,
+            address,
+            imageUrl,
+            phones: ["(11) 99999-9999", "(11) 99999-9999"],
+            description:
+              "Bem-vindo à [Nome da Barbearia], onde tradição e modernidade se encontram para proporcionar a você uma experiência de cuidado pessoal incomparável. Desde [ano de fundação], temos nos dedicado a oferecer serviços de barbearia de alta qualidade, com um toque de autenticidade e estilo.",
+          },
+        })
 
-      barbershops.push(barbershop)
+        for (const service of services) {
+          await prisma.barbershopService.create({
+            data: {
+              name: service.name,
+              description: service.description,
+              price: service.price,
+              barbershop: {
+                connect: {
+                  id: barbershop.id,
+                },
+              },
+              imageUrl: service.imageUrl,
+            },
+          })
+        }
+
+        console.log(`Barbershop with email ${email} created.`)
+      }
     }
 
     await prisma.$disconnect()
   } catch (error) {
     console.error("Erro ao criar as barbearias:", error)
+    await prisma.$disconnect()
+    process.exit(1)
   }
 }
 
