@@ -1,6 +1,6 @@
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient } = require("@prisma/client")
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 async function seedDatabase() {
   try {
@@ -15,7 +15,7 @@ async function seedDatabase() {
       "https://utfs.io/f/60f24f5c-9ed3-40ba-8c92-0cd1dcd043f9-16w.png",
       "https://utfs.io/f/f64f1bd4-59ce-4ee3-972d-2399937eeafc-16x.png",
       "https://utfs.io/f/e995db6d-df96-4658-99f5-11132fd931e1-17j.png",
-    ];
+    ]
     const creativeNames = [
       "Barbearia Vintage",
       "Corte & Estilo",
@@ -27,7 +27,7 @@ async function seedDatabase() {
       "Aparência Impecável",
       "Estilo Urbano",
       "Estilo Clássico",
-    ];
+    ]
 
     const addresses = [
       "Rua da Barbearia, 123",
@@ -40,7 +40,7 @@ async function seedDatabase() {
       "Praça da Aparência, 505",
       "Rua Urbana, 606",
       "Avenida Clássica, 707",
-    ];
+    ]
 
     const services = [
       {
@@ -85,13 +85,13 @@ async function seedDatabase() {
         imageUrl:
           "https://utfs.io/f/8a457cda-f768-411d-a737-cdb23ca6b9b5-b3pegf.png",
       },
-    ];
+    ]
 
-    const barbershops = [];
+    const barbershops = []
     for (let i = 0; i < 10; i++) {
-      const name = creativeNames[i];
-      const address = addresses[i];
-      const imageUrl = images[i];
+      const name = creativeNames[i]
+      const address = addresses[i]
+      const imageUrl = images[i]
 
       const barbershop = await prisma.barbershop.create({
         data: {
@@ -101,9 +101,9 @@ async function seedDatabase() {
           imageUrl: imageUrl,
           phones: ["(11) 99999-9999", "(11) 99999-9999"],
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac augue ullamcorper, pharetra orci mollis, auctor tellus. Phasellus pharetra erat ac libero efficitur tempus. Donec pretium convallis iaculis. Etiam eu felis sollicitudin, cursus mi vitae, iaculis magna. Nam non erat neque. In hac habitasse platea dictumst. Pellentesque molestie accumsan tellus id laoreet.",
+            "Bem-vindo à [Nome da Barbearia], onde tradição e modernidade se encontram para proporcionar a você uma experiência de cuidado pessoal incomparável. Desde [ano de fundação], temos nos dedicado a oferecer serviços de barbearia de alta qualidade, com um toque de autenticidade e estilo.",
         },
-      });
+      })
 
       for (const service of services) {
         await prisma.barbershopService.create({
@@ -118,16 +118,16 @@ async function seedDatabase() {
             },
             imageUrl: service.imageUrl,
           },
-        });
+        })
       }
 
-      barbershops.push(barbershop);
+      barbershops.push(barbershop)
     }
 
-    await prisma.$disconnect();
+    await prisma.$disconnect()
   } catch (error) {
-    console.error("Erro ao criar as barbearias:", error);
+    console.error("Erro ao criar as barbearias:", error)
   }
 }
 
-seedDatabase();
+seedDatabase()
