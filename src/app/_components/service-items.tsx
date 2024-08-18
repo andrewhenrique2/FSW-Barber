@@ -34,11 +34,6 @@ const MORNING_TIMES = ["09:00", "10:00", "11:00"]
 const AFTERNOON_TIMES = ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00"]
 const EVENING_TIMES = ["19:00", "20:00"]
 
-interface GetTimeListProps {
-  bookings: Booking[]
-  selectedDay: Date
-}
-
 const filterAvailableTimes = (
   times: string[],
   bookings: Booking[],
@@ -233,7 +228,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                           <Sun className="text-yellow-500" />
                           <span className="text-sm font-semibold">Manhã</span>
                         </div>
-                        <div className="flex gap-2 overflow-x-auto">
+                        <div className="flex gap-2 overflow-x-auto px-4">
                           {morningTimes.length > 0 ? (
                             morningTimes.map((time) => (
                               <Button
@@ -259,7 +254,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                           <CloudSun className="text-orange-500" />
                           <span className="text-sm font-semibold">Tarde</span>
                         </div>
-                        <div className="flex gap-2 overflow-x-auto">
+                        <div className="flex gap-2 overflow-x-auto px-4">
                           {afternoonTimes.length > 0 ? (
                             afternoonTimes.map((time) => (
                               <Button
@@ -285,7 +280,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                           <Moon className="text-blue-500" />
                           <span className="text-sm font-semibold">Noite</span>
                         </div>
-                        <div className="flex gap-2 overflow-x-auto">
+                        <div className="flex gap-2 overflow-x-auto px-4">
                           {eveningTimes.length > 0 ? (
                             eveningTimes.map((time) => (
                               <Button
