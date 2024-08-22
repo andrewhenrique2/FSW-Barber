@@ -31,6 +31,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog"
+import { cancelBooking } from "../_actions/cancel-booking"
 
 interface BookingItemProps {
   booking: Prisma.BookingGetPayload<{
@@ -53,10 +54,11 @@ const BookingItem = ({ booking }: BookingItemProps) => {
     setIsDeleteLoading(true)
 
     try {
-      console.log(`Cancelar reserva ${booking.id}`)
+      await cancelBooking(booking.id)
       toast.success("Reserva cancelada com sucesso!")
     } catch (error) {
       console.error(error)
+      toast.error("Falha ao cancelar a reserva.")
     } finally {
       setIsDeleteLoading(false)
     }
@@ -109,7 +111,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
         <div className="px-5">
           <div className="relative mt-6 h-[180px] w-full">
             <Image
-              src="/barbershop-map.png"
+              src={booking.service.imageUrl}
               fill
               alt={booking.service.barbershop.name}
             />

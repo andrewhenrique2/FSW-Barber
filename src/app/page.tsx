@@ -113,7 +113,9 @@ export default async function Home() {
           </div>
         </>
       ) : (
-        <p className="text-gray-500">Você não tem agendamentos futuros.</p>
+        <p className="pl-5 pt-6 text-gray-500">
+          Você não tem agendamentos futuros.
+        </p>
       )}
 
       {/* Barbearias recomendadas */}
