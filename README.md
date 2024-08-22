@@ -54,6 +54,7 @@ bash
 Copiar código
 npm run dev
 <br/><br/>
+![fsw](https://github.com/user-attachments/assets/ad6398b3-cce1-4407-89c3-7f50ede63ff2)
 
 </div>
 
