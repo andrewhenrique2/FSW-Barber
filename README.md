@@ -1,29 +1,36 @@
-# FSW Barber
+<div align="center">
+
+# ✂️ FSW Barber 💈
 
 **FSW Barber** é uma aplicação mobile de agendamento para barbearias, desenvolvida utilizando **React** e **Next.js**. A plataforma permite que usuários encontrem barbearias, visualizem serviços disponíveis, façam reservas e gerenciem seus agendamentos diretamente do celular.
+ <br/>
+🌐 Deploy:  [Live](https://fsw-barber-fawn.vercel.app )
+<br/> <br/>
+![barber](https://github.com/user-attachments/assets/a146180b-2034-4eb5-9d6f-6fea588345c1)
+</div>
 
 <div>
 
-## 🚀 **Funcionalidades** <br/>
-**Pesquisa de Barbearias**: Encontre rapidamente barbearias próximas e populares. <br/>
-**Agendamento de Serviços**: Reserve cortes de cabelo, barba e outros serviços com facilidade. <br/>
-**Autenticação com Google**: Login seguro e rápido utilizando sua conta Google, integrado com **NextAuth**. <br/>
-**Gerenciamento de Agendamentos**: Visualize e cancele seus agendamentos diretamente na plataforma. <br/>
-**Interface Responsiva**: Design otimizado para dispositivos móveis, utilizando **Tailwind CSS**. <br/>
-**Sistema de Reservas**: Backend robusto com **Prisma** e **PostgreSQL** para gerenciar dados de usuários e reservas.
+## 🚀 Funcionalidades <br/>
+- 🔍 **Pesquisa de Barbearias**: Encontre rapidamente barbearias próximas e populares. <br/>
+- 🗓️ **Agendamento de Serviços**: Reserve cortes de cabelo, barba e outros serviços com facilidade. <br/>
+- 🔐 **Autenticação com Google**: Login seguro e rápido utilizando sua conta Google, integrado com **NextAuth**. <br/>
+- 📅 **Gerenciamento de Agendamentos**: Visualize e cancele seus agendamentos diretamente na plataforma. <br/>
+- 📱 **Interface Responsiva**: Design otimizado para dispositivos móveis, utilizando **Tailwind CSS**. <br/>
+- 🛠️ **Sistema de Reservas**: Backend robusto com **Prisma** e **PostgreSQL** para gerenciar dados de usuários e reservas.
 
-<br/><br/>
+<br/>
 
-## 🛠️ **Tecnologias Utilizadas** <br/>
-**Frontend**: React, Next.js, Tailwind CSS <br/>
-**Backend**: Node.js, Prisma, PostgreSQL <br/>
-**Autenticação**: NextAuth <br/>
-**Bibliotecas Adicionais**: Lucide-react, Date-fns
+## 🛠️ Tecnologias Utilizadas <br/>
+- 💻 **Frontend**: React, Next.js, Tailwind CSS, TypeScript <br/>
+- 🗄️ **Backend**: Node.js, Prisma, PostgreSQL <br/>
+- 🔑 **Autenticação**: NextAuth <br/>
+- 🛠️ **Bibliotecas Adicionais**: Lucide-react, Date-fns
 
-<br/><br/>
+<br/>
 
-## 🔧 **Configuração do Projeto** <br/>
-1. Clone este repositório:
+## 🔧 Configuração do Projeto <br/>
+1. 🔄 **Clone este repositório**:
    ```bash
    git clone https://github.com/seu-usuario/fsw-barber.git
 ## Instale as dependências:
@@ -48,13 +55,7 @@ Copiar código
 npm run dev
 <br/><br/>
 
-🌐 Deploy <br/>
-Este projeto foi implantado e está disponível em produção. Acesse o deploy aqui: [Deploy](https://fsw-barber-fawn.vercel.app )
-
-
 </div>
 
 
 
-![localhost_3000_ (7)](https://github.com/user-attachments/assets/ba96502d-92e9-4ebe-ad06-9fed804d063f)
-![localhost_3000_ (8)](https://github.com/user-attachments/assets/c95fc610-c4fa-4716-841d-953a29245d35)
